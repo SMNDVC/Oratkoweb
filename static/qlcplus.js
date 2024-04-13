@@ -13,8 +13,12 @@ window.onload = function() {
       connectToWebSocket(data.qlcplusIP);
       setTimeout(function() {
         var connStatus = document.getElementById('connStatus');
+        var moreOptions = document.getElementById('moreOptions');
         if (connStatus) {
           connStatus.classList.remove('d-none');
+        }
+        if (moreOptions) {
+          moreOptions.classList.remove('d-none');
         }
       }, 150);
     })
@@ -404,3 +408,39 @@ function stopAllFunctions(except) {
 function selectValue(value) {
   document.getElementById('qlcplusIPInput').value = value;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var rangeBar = document.getElementById("rangeBarRed");
+  if (rangeBar) {
+    rangeBar.addEventListener("input", function() {
+      var multipliedValue = rangeBar.value * 2.55;
+      var roundedValue = Math.ceil(multipliedValue);
+      var roundedValueString = roundedValue.toString();
+      vcWidgetSetValue2('13', roundedValueString, 'rangeBarRed');
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  var rangeBar = document.getElementById("rangeBarGreen");
+  if (rangeBar) {
+    rangeBar.addEventListener("input", function() {
+      var multipliedValue = rangeBar.value * 2.55;
+      var roundedValue = Math.ceil(multipliedValue);
+      var roundedValueString = roundedValue.toString();
+      vcWidgetSetValue2('12', roundedValueString, 'rangeBarGreen');
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  var rangeBar = document.getElementById("rangeBarBlue");
+  if (rangeBar) {
+    rangeBar.addEventListener("input", function() {
+      var multipliedValue = rangeBar.value * 2.55;
+      var roundedValue = Math.ceil(multipliedValue);
+      var roundedValueString = roundedValue.toString();
+      vcWidgetSetValue2('11', roundedValueString, 'rangeBarBlue');
+    });
+  }
+});

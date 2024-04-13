@@ -44,6 +44,10 @@ def config():
     
     return render_template('/config.html', qlcplusIP=data['qlcplusIP'])
 
+@app.route('/moreoptions')
+def moreoptions():
+    return render_template('moreoptions.html')
+
 @app.route('/')
 def home():
     return render_template('index.html')
