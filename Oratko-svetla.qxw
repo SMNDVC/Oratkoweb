@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VirtualConsole">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.0</Version>
+  <Author>Simon</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Disabled" BPM="0"/>
+   <Universe Name="Universe 1" ID="0">
+    <Output Plugin="ArtNet" UID="127.0.0.1" Line="0">
+     <PluginParameters outputIP="255.255.255.255"/>
+    </Output>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>4 Channel</Mode>
+   <ID>0</ID>
+   <Name>Dimmer Rampa</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>4 Channel</Mode>
+   <ID>1</ID>
+   <Name>Dimmer Rack</Name>
+   <Universe>0</Universe>
+   <Address>4</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>4 Channel</Mode>
+   <ID>2</ID>
+   <Name>Dimmer Podium</Name>
+   <Universe>0</Universe>
+   <Address>8</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Club par 12-4 RGBW</Model>
+   <Mode>9 channel</Mode>
+   <ID>3</ID>
+   <Name>Club par 12-4 RGBW #1</Name>
+   <Universe>0</Universe>
+   <Address>37</Address>
+   <Channels>9</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Club Par 12-6 RGBWAUV</Model>
+   <Mode>11 Channel</Mode>
+   <ID>4</ID>
+   <Name>Club Par 12-6 RGBWAUV #1</Name>
+   <Universe>0</Universe>
+   <Address>13</Address>
+   <Channels>11</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Club Par 12-6 RGBWAUV</Model>
+   <Mode>11 Channel</Mode>
+   <ID>5</ID>
+   <Name>Club Par 12-6 RGBWAUV #2</Name>
+   <Universe>0</Universe>
+   <Address>25</Address>
+   <Channels>11</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Club par 12-4 RGBW</Model>
+   <Mode>9 channel</Mode>
+   <ID>6</ID>
+   <Name>Club par 12-4 RGBW #2</Name>
+   <Universe>0</Universe>
+   <Address>47</Address>
+   <Channels>9</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>LED PAR64</Model>
+   <Mode>Normal</Mode>
+   <ID>7</ID>
+   <Name>LED PAR64</Name>
+   <Universe>0</Universe>
+   <Address>87</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Indigo 4600</Model>
+   <Mode>14 Channels</Mode>
+   <ID>8</ID>
+   <Name>Indigo 4600 #1</Name>
+   <Universe>0</Universe>
+   <Address>57</Address>
+   <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Indigo 4600</Model>
+   <Mode>14 Channels</Mode>
+   <ID>9</ID>
+   <Name>Indigo 4600 #2</Name>
+   <Universe>0</Universe>
+   <Address>72</Address>
+   <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>SePar </Manufacturer>
+   <Model>QUAD led RGBW IR</Model>
+   <Mode>8 channel mode</Mode>
+   <ID>10</ID>
+   <Name>QUAD led RGBW IR</Name>
+   <Universe>0</Universe>
+   <Address>102</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>LED PAR64</Model>
+   <Mode>Normal</Mode>
+   <ID>11</ID>
+   <Name>LED PAR64 #2</Name>
+   <Universe>0</Universe>
+   <Address>95</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <FixtureGroup ID="0">
+   <Name>Strop</Name>
+   <Size X="1" Y="2"/>
+   <Head X="0" Y="0" Fixture="10">0</Head>
+   <Head X="0" Y="1" Fixture="7">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="1">
+   <Name>Parky vertical</Name>
+   <Size X="1" Y="4"/>
+   <Head X="0" Y="0" Fixture="4">0</Head>
+   <Head X="0" Y="1" Fixture="3">0</Head>
+   <Head X="0" Y="2" Fixture="6">0</Head>
+   <Head X="0" Y="3" Fixture="5">0</Head>
+  </FixtureGroup>
+  <Function ID="5" Type="Scene" Name="Strop biela" Path="Strop">
+   <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="3">1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Scene" Name="Strop cervena" Path="Strop">
+   <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="3">1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">1,255,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
+  <Function ID="7" Type="Scene" Name="Strop zelena" Path="Strop">
+   <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="3">1,0,2,255,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">1,0,2,255,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="Strop modra" Path="Strop">
+   <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="3">1,0,2,0,3,255,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">1,0,2,0,3,255,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="Diskusia - plne osvetlenie" Path="Presety">
+   <Speed FadeIn="3000" FadeOut="3000" Duration="0"/>
+   <FixtureVal ID="0">0,100,1,175,2,30,3,70</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="3">0,255,1,36,2,255,3,121,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,255,3,121,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="7">0,0,1,255,2,121,3,0,4,0,5,0,6,30</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="9">0,53,1,0,2,202,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="10">0,0,1,0,2,0,3,255,4,255,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="11">0,0,1,255,2,121,3,0,4,0,5,0,6,30</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="Film - platno" Path="Presety">
+   <Speed FadeIn="3000" FadeOut="3000" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="7">0,0,1,255,2,103,3,0,4,0,5,0,6,10</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="9">0,53,1,0,2,202,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="10">0,0,1,0,2,0,3,255,4,30,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="11">0,0,1,255,2,121,3,0,4,0,5,0,6,5</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="Kapela" Path="Presety">
+   <Speed FadeIn="3000" FadeOut="3000" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,0,2,68,3,70</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="3">0,255,1,0,2,255,3,121,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,255,3,121,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="7">0,0,1,255,2,103,3,0,4,0,5,0,6,255</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="9">0,53,1,0,2,202,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,200,12,32,13,0</FixtureVal>
+   <FixtureVal ID="11">0,0,1,255,2,103,3,0,4,0,5,0,6,255</FixtureVal>
+   <FixtureVal ID="10">0,0,1,0,2,0,3,255,4,255,5,0,6,0,7,0</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="Tma" Path="Presety">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="4">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="0">0,0,1,0,2,0,3,0</FixtureVal>
+   <FixtureVal ID="8">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="9">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="7">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="11">0,0,1,0,2,0,3,0,4,0,5,0,6,0</FixtureVal>
+   <FixtureVal ID="10">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+  </Function>
+  <Monitor DisplayMode="1" ShowLabels="1">
+   <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
+   <ChannelStyle>0</ChannelStyle>
+   <ValueStyle>0</ValueStyle>
+   <Grid Width="1" Height="3" Depth="1" Units="0"/>
+   <FxItem ID="7" XPos="-5.61798" YPos="202.247"/>
+   <FxItem ID="10" XPos="533.459" YPos="252.809"/>
+  </Monitor>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="">
+   <Appearance>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>Default</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
+   </Appearance>
+   <SoloFrame Caption="" ID="8">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="True" X="0" Y="500" Width="975" Height="500"/>
+    <AllowChildren>True</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>False</ShowEnableButton>
+    <Mixing>False</Mixing>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Button Caption="Osvetlenie stropu modrá" ID="5" Icon="">
+     <WindowState Visible="True" X="60" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Osvetlenie stropu biela" ID="6" Icon="">
+     <WindowState Visible="True" X="365" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Osvetlenie stropu červená" ID="7" Icon="">
+     <WindowState Visible="True" X="670" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+   </SoloFrame>
+   <Slider Caption="Slider 4" ID="4" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="200" Y="1000" Width="150" Height="320"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="255">
+     <Channel Fixture="0">0</Channel>
+     <Channel Fixture="0">1</Channel>
+     <Channel Fixture="1">0</Channel>
+     <Channel Fixture="1">1</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
+   <SoloFrame Caption="" ID="3">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="True" X="0" Y="0" Width="975" Height="500"/>
+    <AllowChildren>True</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>False</ShowEnableButton>
+    <Mixing>False</Mixing>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Button Caption="Podim 100" ID="0" Icon="">
+     <WindowState Visible="True" X="60" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Svetlo podium 30%" ID="1" Icon="">
+     <WindowState Visible="True" X="365" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Podium Tma" ID="2" Icon="">
+     <WindowState Visible="True" X="670" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+   </SoloFrame>
+   <Slider Caption="Slider 9" ID="9" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="30" Y="1000" Width="165" Height="320"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0">
+     <Channel Fixture="3">0</Channel>
+     <Channel Fixture="6">0</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
+   <Button Caption="Turn Off Functions" ID="10" Icon="">
+    <WindowState Visible="True" X="425" Y="1055" Width="205" Height="220"/>
+    <Appearance>
+     <FrameStyle>None</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <Function ID="4294967295"/>
+    <Action FadeOut="3000">StopAll</Action>
+    <Intensity Adjust="False">100</Intensity>
+   </Button>
+   <SoloFrame Caption="" ID="15">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="True" X="190" Y="1415" Width="200" Height="200"/>
+    <AllowChildren>True</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>False</ShowEnableButton>
+    <Mixing>False</Mixing>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Button Caption="Tma" ID="16" Icon="">
+     <WindowState Visible="True" X="105" Y="100" Width="95" Height="100"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="12"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Film - platno" ID="17" Icon="">
+     <WindowState Visible="True" X="105" Y="0" Width="95" Height="100"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="10"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Kapela" ID="18" Icon="">
+     <WindowState Visible="True" X="0" Y="100" Width="105" Height="100"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="11"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Diskusia - plne osvetlenie" ID="19" Icon="">
+     <WindowState Visible="True" X="0" Y="0" Width="105" Height="100"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="9"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+   </SoloFrame>
+   <Slider Caption="green" ID="11" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="755" Y="1025" Width="60" Height="200"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0">
+     <Channel Fixture="3">2</Channel>
+     <Channel Fixture="6">2</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
+   <Slider Caption="blue" ID="12" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="815" Y="1025" Width="60" Height="200"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0">
+     <Channel Fixture="3">3</Channel>
+     <Channel Fixture="6">3</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
+   <Slider Caption="red" ID="13" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="695" Y="1025" Width="60" Height="200"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0">
+     <Channel Fixture="3">1</Channel>
+     <Channel Fixture="6">1</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
+  </Frame>
+  <Properties>
+   <Size Width="978" Height="3000"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
+ </VirtualConsole>
+ <SimpleDesk>
+  <Engine>
+   <CueStack ID="0">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+  </Engine>
+ </SimpleDesk>
+</Workspace>

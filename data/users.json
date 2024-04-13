@@ -1,15 +1,10 @@
 [
     {
-      "username": "admin",
-      "password": "pswd"
+        "username": "admin",
+        "password": "$2b$12$P8HbR1V5315T2hPETarQFe8nVa4T4BlgD3ALnuFNg6Sx4x5AkwE1i"
     },
     {
-      "username": " ",
-      "password": " "
-    },
-    {
-      "username": "user3",
-      "password": "password3"
+        "username": "admin",
+        "password": "$2b$12$OjMma0XxrUeZvbi2cbqe2O0GhnCYgftnbdXQ/ZVuv7u7ytfHkJD3m"
     }
-  ]
-  
+]

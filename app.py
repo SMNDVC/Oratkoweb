@@ -1,11 +1,36 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, request
 import os
 import json
+import bcrypt
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
+def update_user_passwords():
+    users = load_users()
+    for user in users:
+        user['password'] = hash_password(user['password']).decode('utf-8')
+    
+    data_dir = os.path.join(os.path.dirname(__file__), 'data') 
+    file_path = os.path.join(data_dir, 'users.json')
+    with open(file_path, 'w') as f:
+        json.dump(users, f, indent=4)
 
+def authenticate(username, password):
+    users = load_users()
+    for user in users:
+        if user['username'] == username:
+            stored_password = user['password'].encode('utf-8')
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password):
+                return True
+    return False
+
+# Hash a password for storing
+def hash_password(password):
+    password_bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password_bytes, salt)
+    return hashed
 
 # Load user data from file
 def load_users():
@@ -20,8 +45,10 @@ def load_users():
 def authenticate(username, password):
     users = load_users()
     for user in users:
-        if user['username'] == username and user['password'] == password:
-            return True
+        if user['username'] == username:
+            stored_password = user['password'].encode('utf-8')
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password):
+                return True
     return False
 
 @app.route('/update_json', methods=['POST'])
@@ -97,5 +124,6 @@ def logout():
     return redirect(url_for('qlcplus'))
 
 if __name__ == '__main__':
+    # update_user_passwords()
     app.run(host='0.0.0.0', port=5000)
     
