@@ -73,7 +73,11 @@ def config():
 
 @app.route('/moreoptions')
 def moreoptions():
-    return render_template('moreoptions.html')
+
+    json_url = os.path.join(app.static_folder, 'config.json')
+    with open(json_url, 'r') as f:
+        data = json.load(f)
+    return render_template('moreoptions.html', qlcplusIP=data['qlcplusIP'])
 
 @app.route('/')
 def home():
@@ -89,7 +93,11 @@ def tutorialy():
 
 @app.route('/qlcplus')
 def qlcplus():
-    return render_template('qlcplus.html')
+
+    json_url = os.path.join(app.static_folder, 'config.json')
+    with open(json_url, 'r') as f:
+        data = json.load(f)
+    return render_template('qlcplus.html', qlcplusIP=data['qlcplusIP'])
 
 # @app.route('/prezentacie')
 # def osvetlenie_podium():

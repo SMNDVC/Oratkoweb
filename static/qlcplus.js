@@ -192,7 +192,11 @@ function wsOnOpen(ev) {
   }
   isConnected = true;
   console.log("Connected to ws")
-  getWidgetStatus("9")
+  getWidgetStatus("9", "rangeBarStrop")
+  getWidgetStatus("4", "rangeBarPrezentacie")
+  getWidgetStatus("13", "rangeBarRed")
+  getWidgetStatus("11", "rangeBarGreen")
+  getWidgetStatus("12", "rangeBarBlue")
   // getWidgetStatus2("4")
 };
 
@@ -352,32 +356,51 @@ function resetSliderSetFunctions(widgetId, onFunctionIds = [], offFunctionIds = 
   turnOffFunctions(offFunctionIds);
 }
 
-function getWidgetStatus(widgetID) {
-  // WebSocket sending logic
-  websocket.send('QLC+API|getWidgetStatus|' + widgetID);
-
-  // WebSocket message handler
-  websocket.addEventListener('message', function(event) {
-    var msgParams = event.data.split('|');
-    if (msgParams[0] === "QLC+API" && msgParams[1] === "getWidgetStatus") {
-      var status = msgParams[2];
-      if (status === "PLAY") {
-        status = status + "(Step: " + msgParams[3] + ")";
+function getWidgetStatus(widgetID, ranngeBarId) {
+  // Fetch configuration data
+  fetch('/static/config.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-      // console.log("Widget Status:", status); 
-      var rangeBarStrop = document.getElementById("rangeBarStrop");
-      if (rangeBarStrop) {
-        processedStatus = Math.ceil(status/2.55);
-        if (processedStatus < 10) {
-          rangeBarStrop.value = 0
+      return response.json();
+    })
+    .then(data => {
+      var url = 'ws://' + data.qlcplusIP + '/qlcplusWS';
+      var websocket = new WebSocket(url);
+
+      // WebSocket open event handler
+      websocket.addEventListener('open', function () {
+        websocket.send('QLC+API|getWidgetStatus|' + widgetID);
+      });
+
+      // WebSocket message handler
+      websocket.addEventListener('message', function (event) {
+        var msgParams = event.data.split('|');
+        if (msgParams[0] === "QLC+API" && msgParams[1] === "getWidgetStatus") {
+          var status = msgParams[2];
+          if (status === "PLAY") {
+            status = status + "(Step: " + msgParams[3] + ")";
+          }
+          // Handle the status message
+          var rangeBar = document.getElementById(ranngeBarId);
+          if (rangeBar) {
+            processedStatus = Math.ceil(status / 2.55);
+            if (processedStatus < 10) {
+              rangeBar.value = 0;
+            } else {
+              rangeBar.value = Math.ceil(status / 2.55);
+              websocket.close()
+            }
+          }
         }
-        else {
-          rangeBarStrop.value = Math.ceil(status/2.55);
-        }
-      } 
-    }
-  });
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching configuration:', error);
+    });
 }
+
 
 function getWidgetStatus2(widgetID) {
   // WebSocket sending logic
@@ -394,15 +417,15 @@ function getWidgetStatus2(widgetID) {
       // console.log("Widget Status:", status); 
       var rangeBarPrezentacie = document.getElementById("rangeBarPrezentacie");
       if (rangeBarPrezentacie) {
-        rangeBarPrezentacie.value = Math.ceil(status/2.55);
-      } 
+        rangeBarPrezentacie.value = Math.ceil(status / 2.55);
+      }
     }
   });
 }
 
 function stopAllFunctions(except) {
-  vcWidgetSetValue2("10", "255", undefined)
-  vcWidgetSetValue2(except, "225", undefined)
+  vcWidgetSetValue2("10", "255", undefined);
+  vcWidgetSetValue2(except, "225", undefined);
 }
 
 function selectValue(value) {
@@ -410,34 +433,30 @@ function selectValue(value) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  var rangeBar = document.getElementById("rangeBarRed");
-  if (rangeBar) {
-    rangeBar.addEventListener("input", function() {
-      var multipliedValue = rangeBar.value * 2.55;
+  var rangeBarRed = document.getElementById("rangeBarRed");
+  if (rangeBarRed) {
+    rangeBarRed.addEventListener("input", function() {
+      var multipliedValue = rangeBarRed.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
       vcWidgetSetValue2('13', roundedValueString, 'rangeBarRed');
     });
   }
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-  var rangeBar = document.getElementById("rangeBarGreen");
-  if (rangeBar) {
-    rangeBar.addEventListener("input", function() {
-      var multipliedValue = rangeBar.value * 2.55;
+  var rangeBarGreen = document.getElementById("rangeBarGreen");
+  if (rangeBarGreen) {
+    rangeBarGreen.addEventListener("input", function() {
+      var multipliedValue = rangeBarGreen.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
       vcWidgetSetValue2('12', roundedValueString, 'rangeBarGreen');
     });
   }
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-  var rangeBar = document.getElementById("rangeBarBlue");
-  if (rangeBar) {
-    rangeBar.addEventListener("input", function() {
-      var multipliedValue = rangeBar.value * 2.55;
+  var rangeBarBlue = document.getElementById("rangeBarBlue");
+  if (rangeBarBlue) {
+    rangeBarBlue.addEventListener("input", function() {
+      var multipliedValue = rangeBarBlue.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
       vcWidgetSetValue2('11', roundedValueString, 'rangeBarBlue');
