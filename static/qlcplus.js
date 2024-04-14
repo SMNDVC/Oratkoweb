@@ -1,5 +1,6 @@
 var isConnected = false;
 var buttons_1 = document.querySelectorAll('.btn-group-1');
+var buttons_2 = document.querySelectorAll('.btn-group-2');
 
 window.onload = function() {
   fetch('/static/config.json')
@@ -28,25 +29,6 @@ window.onload = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-  buttons_1.forEach(button => {
-      button.addEventListener('click', function() {
-          // Check if the clicked button is already active
-          if (this.classList.contains('active')) {
-              // If yes, remove the active class to untoggle
-              this.classList.remove('active');
-              this.classList.remove('hover');
-          } else {
-              // Otherwise, remove active class from all buttons
-              buttons_1.forEach(btn => btn.classList.remove('active'));
-              // And add active class to the clicked button
-              this.classList.add('active');
-          }
-      });
-  });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.btn-group-2');
 
   buttons.forEach(button => {
@@ -65,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
-
-
 
 function updateJsonAndReload() {
   var qlcplusIP = document.querySelector('.form-control').value;
@@ -192,12 +172,16 @@ function wsOnOpen(ev) {
   }
   isConnected = true;
   console.log("Connected to ws")
-  getWidgetStatus("9", "rangeBarStrop")
-  getWidgetStatus("4", "rangeBarPrezentacie")
-  getWidgetStatus("13", "rangeBarRed")
-  getWidgetStatus("11", "rangeBarGreen")
-  getWidgetStatus("12", "rangeBarBlue")
-  // getWidgetStatus2("4")
+  getRangebarStatus("9", "rangeBarStrop")
+  getRangebarStatus("4", "rangeBarPrezentacie")
+  getRangebarStatus("13", "rangeBarRed")
+  getRangebarStatus("11", "rangeBarGreen")
+  getRangebarStatus("12", "rangeBarBlue")
+  
+  getButtonStatus('16', 'btn-group-2-4')
+  getButtonStatus('17', 'btn-group-2-2')
+  getButtonStatus('18', 'btn-group-2-3')
+  getButtonStatus('19', 'btn-group-2-1')
 };
 
 function wsOnClose(ev) {
@@ -272,10 +256,6 @@ function connectToWebSocket(host) {
   websocket = new WebSocket(url);
   wshost = "http://" + host;
 
-  
-
-
-
   websocket.onopen = wsOnOpen;
   websocket.onclose = wsOnClose;
   websocket.onerror = wsOnError;
@@ -333,7 +313,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
       vcWidgetSetValue2('4', roundedValueString, 'rangeBarPrezentacie');
-      // buttons_1.classList.remove('active')
     });
   }
 });
@@ -356,7 +335,7 @@ function resetSliderSetFunctions(widgetId, onFunctionIds = [], offFunctionIds = 
   turnOffFunctions(offFunctionIds);
 }
 
-function getWidgetStatus(widgetID, ranngeBarId) {
+function getRangebarStatus(widgetID, ranngeBarId) {
   // Fetch configuration data
   fetch('/static/config.json')
     .then(response => {
@@ -401,27 +380,44 @@ function getWidgetStatus(widgetID, ranngeBarId) {
     });
 }
 
-
-function getWidgetStatus2(widgetID) {
-  // WebSocket sending logic
-  websocket.send('QLC+API|getWidgetStatus|' + widgetID);
-
-  // WebSocket message handler
-  websocket.addEventListener('message', function(event) {
-    var msgParams = event.data.split('|');
-    if (msgParams[0] === "QLC+API" && msgParams[1] === "getWidgetStatus") {
-      var status = msgParams[2];
-      if (status === "PLAY") {
-        status = status + "(Step: " + msgParams[3] + ")";
+function getButtonStatus(widgetID, buttonID) {
+  // Fetch configuration data
+  fetch('/static/config.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-      // console.log("Widget Status:", status); 
-      var rangeBarPrezentacie = document.getElementById("rangeBarPrezentacie");
-      if (rangeBarPrezentacie) {
-        rangeBarPrezentacie.value = Math.ceil(status / 2.55);
-      }
-    }
-  });
-}
+      return response.json();
+    })
+    .then(data => {
+      var url = 'ws://' + data.qlcplusIP + '/qlcplusWS';
+      var websocket = new WebSocket(url);
+
+      // WebSocket open event handler
+      websocket.addEventListener('open', function () {
+        websocket.send('QLC+API|getWidgetStatus|' + widgetID);
+      });
+
+      // WebSocket message handler
+      websocket.addEventListener('message', function (event) {
+        var msgParams = event.data.split('|');
+        if (msgParams[0] === "QLC+API" && msgParams[1] === "getWidgetStatus") {
+          var status = msgParams[2];
+          if (status === "PLAY") {
+            status = status + "(Step: " + msgParams[3] + ")";
+          }
+          // Handle the status message
+          if (status == 255) {
+            const button = document.querySelector('.' + buttonID);
+            button.classList.add('active');
+            websocket.close();
+        };
+          
+        websocket.close()
+    }});
+    })
+    
+};
 
 function stopAllFunctions(except) {
   vcWidgetSetValue2("10", "255", undefined);
@@ -449,7 +445,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var multipliedValue = rangeBarGreen.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
-      vcWidgetSetValue2('12', roundedValueString, 'rangeBarGreen');
+      vcWidgetSetValue2('11', roundedValueString, 'rangeBarGreen');
     });
   }
 
@@ -459,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var multipliedValue = rangeBarBlue.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
-      vcWidgetSetValue2('11', roundedValueString, 'rangeBarBlue');
+      vcWidgetSetValue2('12', roundedValueString, 'rangeBarBlue');
     });
   }
 });

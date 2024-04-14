@@ -149,6 +149,16 @@
    <Head X="0" Y="2" Fixture="6">0</Head>
    <Head X="0" Y="3" Fixture="5">0</Head>
   </FixtureGroup>
+  <Function ID="0" Type="Scene" Name="Rampa 100">
+   <Speed FadeIn="2000" FadeOut="1000" Duration="0"/>
+   <FixtureVal ID="1">0,255,1,255</FixtureVal>
+   <FixtureVal ID="0">0,255,1,255</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="Rampa 0">
+   <Speed FadeIn="1000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="1">0,0,1,0</FixtureVal>
+   <FixtureVal ID="0">0,0,1,0</FixtureVal>
+  </Function>
   <Function ID="5" Type="Scene" Name="Strop biela" Path="Strop">
    <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
    <FixtureVal ID="3">1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
@@ -304,7 +314,7 @@
     </Button>
    </SoloFrame>
    <Slider Caption="Slider 4" ID="4" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="True" X="200" Y="1000" Width="150" Height="320"/>
+    <WindowState Visible="True" X="195" Y="1000" Width="150" Height="320"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -313,7 +323,7 @@
      <Font>Default</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="255" Value="255">
+    <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="0">0</Channel>
      <Channel Fixture="0">1</Channel>
      <Channel Fixture="1">0</Channel>
@@ -339,7 +349,7 @@
     <Mixing>False</Mixing>
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
-    <Button Caption="Podim 100" ID="0" Icon="">
+    <Button Caption="Rampa 100" ID="0" Icon="">
      <WindowState Visible="True" X="60" Y="25" Width="245" Height="450"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
@@ -348,7 +358,7 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="4294967295"/>
+     <Function ID="0"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
@@ -374,7 +384,7 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="4294967295"/>
+     <Function ID="1"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
@@ -389,7 +399,7 @@
      <Font>Default</Font>
     </Appearance>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="255" Value="0">
+    <Level LowLimit="0" HighLimit="255" Value="215">
      <Channel Fixture="3">0</Channel>
      <Channel Fixture="6">0</Channel>
     </Level>

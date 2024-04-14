@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="">
     <style>
 
+#range {
+  position: relative;
+  transform: scale(3); /* Or however big you want it */
+  transform-origin: 36;
+}
+
+input[type='range']::-webkit-slider-thumb {
+      width: 25px;
+      -webkit-appearance: none;
+      height: 25px;
+      border-radius: 50%;
+      background-color: gray;
+    }
+
         .btn-light:active {
           background-color: #c6c7c8;
         }
@@ -63,17 +77,6 @@
             .navbar-text {
                 color: gray;
             }
-            input[type="range"]::-webkit-slider-thumb{
-              -webkit-appearance: none;
-              appearance: none;
-              width: 25px; /* Adjust the width of the thumb */
-              height: 25px; /* Adjust the height of the thumb */
-              background-color: #007bff; /* Adjust the color of the thumb */
-              border: 2px solid #007bff; /* Adjust the border of the thumb */
-              border-radius: 50%; /* Make the thumb circular */
-              cursor: pointer;
-              margin-top: -8px;
-    }
         }
     </style>
 </head>
@@ -118,64 +121,62 @@
         </div>
       </div>
       
-      <div class="container my-5 ">
-        <div class="row justify-content-center">
-          <div class="col-11">
-            <!-- Range bar input element -->
-            <input type="range" class="form-range custom-range" id="rangeBarPrezentacie">
-          </div>
+      <div class="container" style="display: flex; justify-content: center;">
+        <div style="width: 75%;">
+            <input type="range" id="rangeBarPrezentacie" style="width: 100%; height: 40px;">
         </div>
-      </div>
+    </div>
 
 <p class="fw-bold mt-4 ml-2">Osvetlenie Stropu</p>
       <hr class="my-4">
 
-      <p class="fw-bold text-center">Červená</p>
-
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-11">
-            <input type="range" class="form-range custom-range" id="rangeBarRed">
-          </div>
+            <div class="col-auto">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input class="mx-3" type="range" style="writing-mode: vertical-lr; direction: rtl" id="rangeBarRed">
+                    <label for="rangeBarRed">R</label>
+                </div>
+            </div>
+            <div class="col-auto ms-5">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input class="mx-3" type="range" style="writing-mode: vertical-lr; direction: rtl" id="rangeBarGreen">
+                    <label for="rangeBarGreen">G</label>
+                </div>
+            </div>
+            <div class="col-auto ms-5">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input class="mx-3" type="range" style="writing-mode: vertical-lr; direction: rtl" id="rangeBarBlue">
+                    <label for="rangeBarBlue">B</label>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    
+    
       
-      <p class="fw-bold text-center">Zelená</p>
       
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-11">
-            <input type="range" class="form-range custom-range" id="rangeBarGreen">
-          </div>
-        </div>
-      </div>
       
-      <p class="fw-bold text-center">Modrá</p>
       
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-11">
-            <input type="range" class="form-range custom-range" id="rangeBarBlue">
-          </div>
-        </div>
-      </div>
-      
-      <p class="fw-bold text-center">Dimmer</p>
+      <p class="text-center">Dimmer</p>
 
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-11">
-            <input type="range" class="form-range custom-range " id="rangeBarStrop">
-          </div>
+      <div class="container" style="display: flex; justify-content: center;">
+        <div style="width: 75%;">
+            <input type="range" id="rangeBarStrop" style="width: 100%; height: 40px;">
         </div>
-      </div>
+    </div>
+    
+    <div class="d-flex justify-content-end px-3">
+      <a href="/config" id="connStatusLink" class="text-decoration-none" style="text-decoration: none;">
+        <div id="connStatus" class="text-danger d-none">Not connected</div>
+      </a>
+    </div>    
+    
 
 
-<div class="d-flex justify-content-end p-3">
-  <a href="/config" id="connStatusLink" class="text-decoration-none" style=" text-decoration: none;">
-    <div id="connStatus" class="text-danger d-none">Not connected</div>
-  </a>
-</div>
+    
+  
+  
 
 
 
