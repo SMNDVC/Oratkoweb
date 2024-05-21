@@ -91,6 +91,14 @@ def bugy():
 def tutorialy():
     return render_template('tutorialy.html') 
 
+@app.route('/behringer')
+def behringer():
+    return render_template('behringer.html') 
+
+@app.route('/spotify')
+def spotify():
+    return render_template('spotify.html') 
+
 @app.route('/qlcplus')
 def qlcplus():
 
@@ -98,18 +106,6 @@ def qlcplus():
     with open(json_url, 'r') as f:
         data = json.load(f)
     return render_template('qlcplus.html', qlcplusIP=data['qlcplusIP'])
-
-# @app.route('/prezentacie')
-# def osvetlenie_podium():
-#     return render_template('osvetlenie/prezentacie.html')
-
-# @app.route('/strop')
-# def osvetlenie_stropu():
-#     return render_template('osvetlenie/strop.html')
-
-# @app.route('/diskocajovna')
-# def diskocajovna():
-#     return render_template('osvetlenie/diskocajovna.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

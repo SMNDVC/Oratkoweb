@@ -1,0 +1,90 @@
+/* DEFAULT SETTINGS */
+
+body {
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+.no-zoom {
+    touch-action: manipulation;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-text {
+    display: block;
+    margin-left: auto;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        display: none;
+    }
+    .container-fluid {
+        background-color: #333333; /* Background color */
+        border: none; /* Remove border */
+        padding: 10px; /* Adjust padding */
+        color: white; /* Text color */
+    }
+    .navbar-text {
+        color: gray;
+    }
+}
+
+/* BUTTON SETTINGS */
+
+.btn-light:active {
+    background-color: #c6c7c8;
+  }
+
+  .btn-light.active,
+  .btn-light:active {
+    background-color: #c6c7c8 !important; 
+    border: none !important;
+  }
+
+  .btn-light.active:hover,
+  .btn-light.active:focus {
+    background-color: #c6c7c8 !important; 
+  }
+
+  .btn-light:hover {
+    background-color: #f8f9fa; 
+    color: #000000; 
+    border: 1px solid #000000; 
+  }
+  
+  .btn-light {
+    border-color: black;
+  }
+
+/* RANGE SETTINGS */
+
+@media (max-width: 991.98px) {
+    input[type="range"]::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px; /* Adjust the width of the thumb */
+        height: 25px; /* Adjust the height of the thumb */
+        background-color: #007bff; /* Adjust the color of the thumb */
+        border: 2px solid #007bff; /* Adjust the border of the thumb */
+        border-radius: 50%; /* Make the thumb circular */
+        cursor: pointer;
+        margin-top: -8px;
+    }
+
+    #range {
+        position: relative;
+        transform: scale(3); /* Or however big you want it */
+        transform-origin: 36;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        width: 25px;
+        -webkit-appearance: none;
+        height: 25px;
+        border-radius: 50%;
+        background-color: gray;
+      }
+}
