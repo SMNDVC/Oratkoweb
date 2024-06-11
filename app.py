@@ -102,10 +102,14 @@ def spotify():
 @app.route('/qlcplus')
 def qlcplus():
 
+    # json_url = os.path.join(app.static_folder, 'config.json')
+    # with open(json_url, 'r') as f:
+    #     data = json.load(f)
+    # return render_template('qlcplus.html', qlcplusIP=data['qlcplusIP'])
     json_url = os.path.join(app.static_folder, 'config.json')
     with open(json_url, 'r') as f:
         data = json.load(f)
-    return render_template('qlcplus.html', qlcplusIP=data['qlcplusIP'])
+    return render_template('moreoptions.html', qlcplusIP=data['qlcplusIP'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -129,5 +133,5 @@ def logout():
 
 if __name__ == '__main__':
     # update_user_passwords()
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
     

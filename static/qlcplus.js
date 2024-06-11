@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var multipliedValue = rangeBar.value * 2.55;
       var roundedValue = Math.ceil(multipliedValue);
       var roundedValueString = roundedValue.toString();
+      turnOffFunctions(['0','1']) 
       vcWidgetSetValue2('4', roundedValueString, 'rangeBarPrezentacie');
     });
   }
@@ -381,6 +382,11 @@ function getRangebarStatus(widgetID, ranngeBarId) {
 }
 
 function getButtonStatus(widgetID, buttonID) {
+  const button = document.querySelector('.' + buttonID);
+  if (!button) {
+    return;
+  }
+
   // Fetch configuration data
   fetch('/static/config.json')
     .then(response => {
@@ -459,3 +465,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+function turnOffSliders(sliderIds) {
+  sliderIds.forEach(sliderId => vcWidgetSetValue2(sliderId, ''))
+  }
+
+function resolveRangeBar4(val) {
+  val = Math.floor(val/2.55)
+  document.getElementById('rangeBarPrezentacie').value = val
+}
