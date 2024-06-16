@@ -12,12 +12,12 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top " data-bs-theme="dark" style="height: 76px;" aria-label="Thirteenth navbar example">
       <div class="container-fluid bg-body-tertiary" data-bs-theme="dark">
           <div class="d-flex justify-content-between align-items-center w-100">
-              <div class=" d-lg-inline-block">
-                  <a type="button" class="btn btn-secondary ms-lg-5" href="/qlcplus">Späť</a>
-              </div>
-              <div class="d-inline-flex col-lg-4 justify-content-lg-end">
-                  <span class="text-light fs-2">Config page</span>
-              </div>
+            <div class="d-none d-lg-inline-block">
+                <a type="button" class="btn btn-secondary ms-lg-5" href="/qlcplus">Domov</a>
+            </div>
+            <div class="d-lg-none">
+                <a href="/qlcplus"  type="button" class="btn btn-close" disabled aria-label="Close"></a>
+            </div>
               <div class="d-lg-flex col-lg-3 justify-content-lg-end">
                   <span class="text-secondary">by SMNDVC</span>
               </div>
@@ -28,46 +28,37 @@
   <div class="mt-5 pt-5"></div>
 
 
-  <div class="container mt-3 position-fixed left-0">
-    <div class="input-group mb-3">
-        <span class="input-group-text">QLC+ IP:</span>
-        <div class="col-auto">
-            <input id="qlcplusIPInput" type="text" class="form-control" value="{{ qlcplusIP }}">
-        </div>
-        <div class="col-auto">
-            <button class="btn btn-primary" type="button" onclick="updateJsonAndReload()">Connect</button>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Default Values
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" onclick="selectValue('192.168.68.77:9999')">192.168.68.77:9999</a>
-                <a class="dropdown-item" href="#" onclick="selectValue('192.168.68.63:9999')">192.168.68.63:9999</a>
-                <a class="dropdown-item" href="#" onclick="selectValue('10.11.7.30:9999')">10.11.7.30:9999</a>
-                <!-- <a class="dropdown-item" href="#" onclick="selectValue('')"></a> -->
-                <!-- <a class="dropdown-item" href="#" onclick="selectValue('')"></a> -->
-                <!-- <a class="dropdown-item" href="#" onclick="selectValue('')"></a> -->
-            </div>
-        </div>
+    <div style="display: flex; justify-content: center; gap: 5px;">
+        <button id="connectButton" style="display: block;" class="btn btn-success" type="button" onclick="selectValue(window.location.hostname+':9999'), updateJsonAndReload()">Connect to Default address</button>
     </div>
+
+    <div style="display: flex; justify-content: center; gap: 5px;">
+        <button id="disconnectButton" style="display: none;" class="btn btn-danger" type="button" onclick="selectValue(''), updateJsonAndReload()">Disconnect from the server </button>
+    </div>
+
+    
+      <hr class="my-4">
+
     
 
 
-
-
-    <div>
-        <a id="connStatusLink" class="text-decoration-none" style="text-decoration: none;">
-            <div id="connStatus" class="text-danger">Not connected</div>
-        </a>
+  <div style="margin: 10px;">
+    <div class="input-group mb-3">
+        <span class="input-group-text">QLC+ IP:</span>
+        <input id="qlcplusIPInput" placeholder="alternative_ip:9999" type="text" class="form-control" value="{{ qlcplusIP }}">
+        <button class="btn btn-primary" type="button" onclick="updateJsonAndReload()">Connect</button>
     </div>
-</div>
+
+    <div class="d-flex justify-content-end px-3">
+        <a href="/config" id="connStatusLink" class="text-decoration-none" style="text-decoration: none;">
+          <div id="connStatus" class="text-danger d-none">Not connected</div>
+        </a>
+      </div>
 
 
 
   
   
-  <a href="/logout" class="btn btn-primary position-fixed bottom-0 end-0 my-3 mx-3" style="margin-left: 10px;">Logout</a>
 
   
   <script src="{{ url_for('static', filename='qlcplus.js') }}"></script>

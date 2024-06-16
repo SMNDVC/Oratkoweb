@@ -28,6 +28,13 @@ window.onload = function() {
     });
 };
 
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === 'visible') {
+      window.location.reload(true)
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.btn-group-2');
 
@@ -182,6 +189,8 @@ function wsOnOpen(ev) {
   getButtonStatus('17', 'btn-group-2-2')
   getButtonStatus('18', 'btn-group-2-3')
   getButtonStatus('19', 'btn-group-2-1')
+
+  updateConfigButtons(true)
 };
 
 function wsOnClose(ev) {
@@ -191,7 +200,8 @@ function wsOnClose(ev) {
   if (connStatus) {
     connStatus.innerHTML = "<span class='text-danger'>Not connected</span>";
   }
-  isConnected = false;
+  isConnected = false
+  updateConfigButtons(false)
 }
 
 function wsOnError(ev) {
@@ -201,7 +211,8 @@ function wsOnError(ev) {
   if (connStatus) {
     connStatus.innerHTML = "<span class='text-danger'>Not connected</span>";
   }
-  isConnected = false;
+  isConnected = false
+  updateConfigButtons(false)
 }
 
 function wsOnMessage(ev) {
@@ -473,4 +484,22 @@ function turnOffSliders(sliderIds) {
 function resolveRangeBar4(val) {
   val = Math.floor(val/2.55)
   document.getElementById('rangeBarPrezentacie').value = val
+}
+
+function updateConfigButtons(boolean) {
+  const connectButton = document.getElementById('connectButton');
+  const disconnectButton = document.getElementById('disconnectButton');
+
+  if (!connectButton || !disconnectButton) {
+    return
+  }
+
+  if (boolean) {
+    connectButton.style.display = 'none';
+    disconnectButton.style.display = 'block';
+  }
+  if (!boolean) {
+    connectButton.style.display = 'block';
+    disconnectButton.style.display = 'none';
+  }
 }

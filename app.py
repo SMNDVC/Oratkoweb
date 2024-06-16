@@ -62,8 +62,8 @@ def update_json():
 
 @app.route('/config')
 def config():
-    if 'logged_in' not in session:
-        return redirect(url_for('login'))
+    # if 'logged_in' not in session:
+    #     return redirect(url_for('login'))
     
     json_url = os.path.join(app.static_folder, 'config.json')
     with open(json_url, 'r') as f:
