@@ -180,18 +180,60 @@ function wsOnOpen(ev) {
   isConnected = true;
   console.log("Connected to ws")
   getRangebarStatus("9", "rangeBarStrop")
-  getRangebarStatus("4", "rangeBarPrezentacie")
+  slider4PageReloadHandler()
   getRangebarStatus("13", "rangeBarRed")
   getRangebarStatus("11", "rangeBarGreen")
   getRangebarStatus("12", "rangeBarBlue")
+  getRangebarStatus("14", "rangeBarWhite")
   
   getButtonStatus('16', 'btn-group-2-4')
   getButtonStatus('17', 'btn-group-2-2')
   getButtonStatus('18', 'btn-group-2-3')
   getButtonStatus('19', 'btn-group-2-1')
 
+  requestAPIWithParam('getFunctionStatus', '2')
   updateConfigButtons(true)
 };
+
+function slider4PageReloadHandler() {
+  fetch('/static/config.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      var url = 'ws://' + data.qlcplusIP + '/qlcplusWS';
+      var websocket = new WebSocket(url);
+
+      // WebSocket open event handler
+      websocket.addEventListener('open', function () {
+        websocket.send('QLC+API|getFunctionStatus|0');
+      });
+
+      // WebSocket message handler
+      websocket.addEventListener('message', function (event) {
+        var msgParams = event.data.split('|');
+        if (msgParams[0] === "QLC+API" && msgParams[1] === "getFunctionStatus") {
+          var status = msgParams[2];
+          if (status === "Running") {
+            vcWidgetSetValue2('4', '255', 'rangeBarPrezentacie')
+            // console.log("Set 4 to 255")
+            // console.log("STatus:", status)
+          }
+          else {
+            getRangebarStatus("4", "rangeBarPrezentacie")
+            // console.log("Set 4 correct value")
+            // console.log("Status:", status)
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching configuration:', error);
+    });
+}
 
 function wsOnClose(ev) {
   console.log("QLC+ connection lost!", ev);
@@ -392,6 +434,35 @@ function getRangebarStatus(widgetID, ranngeBarId) {
     });
 }
 
+function getWidgetStatus(widgetID) {
+  
+  fetch('/static/config.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      var url = 'ws://' + data.qlcplusIP + '/qlcplusWS';
+      var websocket = new WebSocket(url);
+
+      // WebSocket open event handler
+      websocket.addEventListener('open', function () {
+        websocket.send('QLC+API|getWidgetStatus|' + widgetID);
+      });
+
+      // WebSocket message handler
+      websocket.addEventListener('message', function (event) {
+        var msgParams = event.data.split('|');
+        if (msgParams[0] === "QLC+API" && msgParams[1] === "getWidgetStatus") {
+          var status = msgParams[2];
+          console.log(status)
+          
+    }});
+    })
+}
+
 function getButtonStatus(widgetID, buttonID) {
   const button = document.querySelector('.' + buttonID);
   if (!button) {
@@ -475,6 +546,16 @@ document.addEventListener("DOMContentLoaded", function() {
       vcWidgetSetValue2('12', roundedValueString, 'rangeBarBlue');
     });
   }
+
+var rangeBarWhite = document.getElementById("rangeBarWhite");
+if (rangeBarWhite) {
+  rangeBarWhite.addEventListener("input", function() {
+    var multipliedValue = rangeBarWhite.value * 2.55;
+    var roundedValue = Math.ceil(multipliedValue);
+    var roundedValueString = roundedValue.toString();
+    vcWidgetSetValue2('14', roundedValueString, 'rangeBarWhite');
+  });
+}
 });
 
 function turnOffSliders(sliderIds) {

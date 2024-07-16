@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VirtualConsole">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.13.0</Version>
@@ -159,6 +159,16 @@
    <FixtureVal ID="1">0,0,1,0</FixtureVal>
    <FixtureVal ID="0">0,0,1,0</FixtureVal>
   </Function>
+  <Function ID="2" Type="Scene" Name="Strop 100" Path="Strop">
+   <Speed FadeIn="2000" FadeOut="1000" Duration="0"/>
+   <FixtureVal ID="3">0,255,1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">0,255,1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="Strop 0" Path="Strop">
+   <Speed FadeIn="1000" FadeOut="2000" Duration="0"/>
+   <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0</FixtureVal>
+  </Function>
   <Function ID="5" Type="Scene" Name="Strop biela" Path="Strop">
    <Speed FadeIn="3000" FadeOut="2000" Duration="0"/>
    <FixtureVal ID="3">1,0,2,0,3,0,4,255,5,0,6,0,7,0,8,0</FixtureVal>
@@ -265,7 +275,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="0" Y="500" Width="975" Height="500"/>
+    <WindowState Visible="True" X="0" Y="500" Width="975" Height="500"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -273,8 +283,8 @@
     <Mixing>False</Mixing>
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
-    <Button Caption="Osvetlenie stropu modrá" ID="5" Icon="">
-     <WindowState Visible="False" X="60" Y="25" Width="245" Height="450"/>
+    <Button Caption="Strop 100" ID="5" Icon="">
+     <WindowState Visible="True" X="60" Y="25" Width="245" Height="450"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -282,12 +292,12 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="4294967295"/>
+     <Function ID="2"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
-    <Button Caption="Osvetlenie stropu biela" ID="6" Icon="">
-     <WindowState Visible="False" X="365" Y="25" Width="245" Height="450"/>
+    <Button Caption="Strop 0" ID="6" Icon="">
+     <WindowState Visible="True" X="365" Y="25" Width="245" Height="450"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -295,26 +305,13 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="4294967295"/>
-     <Action>Toggle</Action>
-     <Intensity Adjust="False">100</Intensity>
-    </Button>
-    <Button Caption="Osvetlenie stropu červená" ID="7" Icon="">
-     <WindowState Visible="False" X="670" Y="25" Width="245" Height="450"/>
-     <Appearance>
-      <FrameStyle>None</FrameStyle>
-      <ForegroundColor>Default</ForegroundColor>
-      <BackgroundColor>Default</BackgroundColor>
-      <BackgroundImage>None</BackgroundImage>
-      <Font>Default</Font>
-     </Appearance>
-     <Function ID="4294967295"/>
+     <Function ID="3"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
    </SoloFrame>
    <Slider Caption="Slider 4" ID="4" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="False" X="195" Y="1000" Width="150" Height="320"/>
+    <WindowState Visible="True" X="195" Y="1000" Width="150" Height="320"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -341,7 +338,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="0" Y="0" Width="975" Height="500"/>
+    <WindowState Visible="True" X="0" Y="0" Width="975" Height="500"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -349,34 +346,8 @@
     <Mixing>False</Mixing>
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
-    <Button Caption="Rampa 100" ID="0" Icon="">
-     <WindowState Visible="False" X="60" Y="25" Width="245" Height="450"/>
-     <Appearance>
-      <FrameStyle>None</FrameStyle>
-      <ForegroundColor>Default</ForegroundColor>
-      <BackgroundColor>Default</BackgroundColor>
-      <BackgroundImage>None</BackgroundImage>
-      <Font>Default</Font>
-     </Appearance>
-     <Function ID="0"/>
-     <Action>Toggle</Action>
-     <Intensity Adjust="False">100</Intensity>
-    </Button>
-    <Button Caption="Svetlo podium 30%" ID="1" Icon="">
-     <WindowState Visible="False" X="365" Y="25" Width="245" Height="450"/>
-     <Appearance>
-      <FrameStyle>None</FrameStyle>
-      <ForegroundColor>Default</ForegroundColor>
-      <BackgroundColor>Default</BackgroundColor>
-      <BackgroundImage>None</BackgroundImage>
-      <Font>Default</Font>
-     </Appearance>
-     <Function ID="4294967295"/>
-     <Action>Toggle</Action>
-     <Intensity Adjust="False">100</Intensity>
-    </Button>
     <Button Caption="Podium Tma" ID="2" Icon="">
-     <WindowState Visible="False" X="670" Y="25" Width="245" Height="450"/>
+     <WindowState Visible="True" X="365" Y="25" Width="245" Height="450"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -388,9 +359,22 @@
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
+    <Button Caption="Rampa 100" ID="0" Icon="">
+     <WindowState Visible="True" X="60" Y="25" Width="245" Height="450"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="0"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
    </SoloFrame>
-   <Slider Caption="Slider 9" ID="9" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="False" X="30" Y="1000" Width="165" Height="320"/>
+   <Slider Caption="Strop dimmer" ID="9" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="790" Y="1240" Width="55" Height="215"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -408,7 +392,7 @@
     </Playback>
    </Slider>
    <Button Caption="Turn Off Functions" ID="10" Icon="">
-    <WindowState Visible="False" X="425" Y="1055" Width="205" Height="220"/>
+    <WindowState Visible="True" X="425" Y="1055" Width="205" Height="220"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -428,7 +412,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="190" Y="1415" Width="200" Height="200"/>
+    <WindowState Visible="True" X="190" Y="1415" Width="200" Height="200"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -437,7 +421,7 @@
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Tma" ID="16" Icon="">
-     <WindowState Visible="False" X="100" Y="50" Width="95" Height="100"/>
+     <WindowState Visible="True" X="100" Y="50" Width="95" Height="100"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -451,7 +435,7 @@
     </Button>
    </SoloFrame>
    <Slider Caption="green" ID="11" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="False" X="755" Y="1025" Width="60" Height="200"/>
+    <WindowState Visible="True" X="755" Y="1025" Width="60" Height="200"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -469,7 +453,7 @@
     </Playback>
    </Slider>
    <Slider Caption="blue" ID="12" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="False" X="815" Y="1025" Width="60" Height="200"/>
+    <WindowState Visible="True" X="815" Y="1025" Width="60" Height="200"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -487,7 +471,7 @@
     </Playback>
    </Slider>
    <Slider Caption="red" ID="13" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="False" X="695" Y="1025" Width="60" Height="200"/>
+    <WindowState Visible="True" X="695" Y="1025" Width="60" Height="200"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -505,7 +489,7 @@
     </Playback>
    </Slider>
    <Button Caption="Kapela" ID="18" Icon="">
-    <WindowState Visible="False" X="495" Y="1440" Width="105" Height="100"/>
+    <WindowState Visible="True" X="495" Y="1440" Width="105" Height="100"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -518,7 +502,7 @@
     <Intensity Adjust="False">100</Intensity>
    </Button>
    <Button Caption="Diskusia - plne osvetlenie" ID="19" Icon="">
-    <WindowState Visible="False" X="580" Y="1345" Width="105" Height="100"/>
+    <WindowState Visible="True" X="580" Y="1345" Width="105" Height="100"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -531,7 +515,7 @@
     <Intensity Adjust="False">100</Intensity>
    </Button>
    <Button Caption="Film - platno" ID="17" Icon="">
-    <WindowState Visible="False" X="455" Y="1340" Width="95" Height="100"/>
+    <WindowState Visible="True" X="455" Y="1340" Width="95" Height="100"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -543,6 +527,24 @@
     <Action>Toggle</Action>
     <Intensity Adjust="False">100</Intensity>
    </Button>
+   <Slider Caption="white" ID="14" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="True" X="875" Y="1025" Width="60" Height="200"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0">
+     <Channel Fixture="3">4</Channel>
+     <Channel Fixture="6">4</Channel>
+    </Level>
+    <Playback>
+     <Function>4294967295</Function>
+    </Playback>
+   </Slider>
   </Frame>
   <Properties>
    <Size Width="978" Height="3000"/>
