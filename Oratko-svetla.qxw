@@ -4,7 +4,7 @@
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.13.0</Version>
-  <Author>Simon</Author>
+  <Author>Simon Dovicovic</Author>
  </Creator>
  <Engine>
   <InputOutputMap>
@@ -385,6 +385,8 @@
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
     <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="3">0</Channel>
+     <Channel Fixture="4">0</Channel>
+     <Channel Fixture="5">0</Channel>
      <Channel Fixture="6">0</Channel>
     </Level>
     <Playback>
@@ -446,6 +448,8 @@
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
     <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="3">2</Channel>
+     <Channel Fixture="4">2</Channel>
+     <Channel Fixture="5">2</Channel>
      <Channel Fixture="6">2</Channel>
     </Level>
     <Playback>
@@ -539,6 +543,8 @@
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
     <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="3">4</Channel>
+     <Channel Fixture="4">5</Channel>
+     <Channel Fixture="5">5</Channel>
      <Channel Fixture="6">4</Channel>
     </Level>
     <Playback>
