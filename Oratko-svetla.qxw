@@ -468,6 +468,8 @@
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
     <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="3">3</Channel>
+     <Channel Fixture="4">3</Channel>
+     <Channel Fixture="5">3</Channel>
      <Channel Fixture="6">3</Channel>
     </Level>
     <Playback>
@@ -486,6 +488,8 @@
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
     <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="3">1</Channel>
+     <Channel Fixture="4">1</Channel>
+     <Channel Fixture="5">1</Channel>
      <Channel Fixture="6">1</Channel>
     </Level>
     <Playback>
