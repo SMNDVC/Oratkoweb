@@ -29,11 +29,11 @@
 
 
     <div style="display: flex; justify-content: center; gap: 5px;">
-        <button id="connectButton" style="display: block;" class="btn btn-success" type="button" onclick="selectValue(window.location.hostname+':9999'), updateJsonAndReload()">Connect to Default address</button>
+        <button id="connectButton" style="display: block;" class="btn btn-success" type="button" onclick="selectValue(window.location.hostname+':9999'), updateJsonAndReload()" href="/start">Connect to Default address</button>
     </div>
 
     <div style="display: flex; justify-content: center; gap: 5px;">
-        <button id="disconnectButton" style="display: none;" class="btn btn-danger" type="button" onclick="selectValue(''), updateJsonAndReload()">Disconnect from the server </button>
+        <button id="disconnectButton" style="display: none;" class="btn btn-danger" type="button" onclick="selectValue(''), updateJsonAndReload()" href="/stop">Disconnect from the server </button>
     </div>
 
     

@@ -1,0 +1,2 @@
+sudo visudo
+    -> %sudo ALL=(ALL) NOPASSWD: /bin/systemctl start qlcplus.service, /bin/systemctl stop qlcplus.service, /bin/systemctl restart qlcplus.service # on the last line

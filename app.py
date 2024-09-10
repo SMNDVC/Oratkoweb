@@ -2,9 +2,30 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import os
 import json
 import bcrypt
+import subprocess
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+
+def manage_service(action):
+    try:
+        subprocess.run(['sudo', 'systemctl', action, 'qlcplus.service'], check=True)
+        return jsonify({"status": f"qlcplus.service {action}ed successfully"}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/start', methods=['GET'])
+def start_service():
+    manage_service('start')
+    return config()
+
+@app.route('/stop', methods=['GET'])
+def stop_service():
+    return manage_service('stop')
+
+@app.route('/restart', methods=['GET'])
+def restart_service():
+    return manage_service('restart')
 
 def update_user_passwords():
     users = load_users()
