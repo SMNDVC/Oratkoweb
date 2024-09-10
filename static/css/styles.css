@@ -81,3 +81,8 @@ input[type='range'] {
 input[type='range']:active:-webkit-slider-runnable-track {
     background: transparent;
 }
+
+.config-button {
+    width: clamp( 50vw ,221px, 60vw);
+    border-spacing: 0;
+}

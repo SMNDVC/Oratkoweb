@@ -28,15 +28,14 @@
   <div class="mt-5 pt-5"></div>
 
 
-    <div style="display: flex; justify-content: center; gap: 5px;">
-        <button id="connectButton" style="display: block;" class="btn btn-success" type="button" onclick="selectValue(window.location.hostname+':9999'), updateJsonAndReload()" href="/start">Connect to Default address</button>
-    </div>
+  <div style="display: flex; justify-content: center; gap: 5px;">
+        <button id="connectButton" style="display: block;" class="btn btn-success config-button" type="button" onclick="selectValue(window.location.hostname+':9999'),updateJsonAndReload()">Connect to Default Address</button>
+</div>
 
-    <div style="display: flex; justify-content: center; gap: 5px;">
-        <button id="disconnectButton" style="display: none;" class="btn btn-danger" type="button" onclick="selectValue(''), updateJsonAndReload()" href="/stop">Disconnect from the server </button>
-    </div>
+<div style="display: flex; justify-content: center; gap: 5px;">
+    <button id="disconnectButton" style="display: none;" class="btn btn-danger config-button" type="button" onclick="selectValue(''), updateJsonAndReload()">Disconnect from <br> WebSocket</button>
+</div>
 
-    
       <hr class="my-4">
 
     
@@ -51,11 +50,33 @@
 
     <div class="d-flex justify-content-end px-3">
         <a href="/config" id="connStatusLink" class="text-decoration-none" style="text-decoration: none;">
-          <div id="connStatus" class="text-danger d-none">Not connected</div>
+          <div id="connStatus" class="text-danger">Not connected</div>
         </a>
       </div>
 
+      <hr class="my-4">
 
+    <div style="display: flex; justify-content: center; gap: 5px;">
+        <button class="btn btn-danger config-button" style="background-color: #71639e; border: #71639e;" type="button" onclick="showModal()">Restart/Stop <br> server</button>
+    </div>
+
+    <div class="modal" id="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered pb-3">
+            <div class="modal-content" style="background: #3e4451; color: white;">
+                <div class="modal-header">
+                    <h1 class="modal-title">Are you sure?</h1>
+                    <button type="button" class="btn-close" aria-label="Close" onclick="hideModal()"></button>
+                </div>
+                <div class="modal-body justify-content-center">
+                    <p class="text-center">Pressing stop will turn off qlc on the server. This is good if you want to connect to ArtNet. Pressing restart will just restart it. Good when encountering any unexpected issues.<br><b>Don't use either inproduction !!</b> </p>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-warning" href="/restart">Restart</a>
+                    <a type="button" class="btn btn-danger" href="/stop">Stop</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
   
   

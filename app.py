@@ -13,19 +13,16 @@ def manage_service(action):
         return jsonify({"status": f"qlcplus.service {action}ed successfully"}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": str(e)}), 500
-    
-@app.route('/start', methods=['GET'])
-def start_service():
-    manage_service('start')
-    return config()
 
 @app.route('/stop', methods=['GET'])
 def stop_service():
-    return manage_service('stop')
+    manage_service('stop')
+    return config()
 
 @app.route('/restart', methods=['GET'])
 def restart_service():
-    return manage_service('restart')
+    manage_service('restart')
+    return config()
 
 def update_user_passwords():
     users = load_users()

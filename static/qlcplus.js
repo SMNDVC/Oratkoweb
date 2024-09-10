@@ -584,3 +584,14 @@ function updateConfigButtons(boolean) {
     disconnectButton.style.display = 'none';
   }
 }
+
+function showModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'block';
+}
+
+function hideModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
+    
